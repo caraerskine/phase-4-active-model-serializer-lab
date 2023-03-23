@@ -3,8 +3,11 @@ class AuthorsController < ApplicationController
 
   def index
     authors = Author.all 
-    render json: authors
+    render json: authors, include: ['profile', 'posts', 'posts.tags']
+    #when youa re trying to show data that does not have a direct relatiosnhip 
+    #associated and not directly
   end
+  #added the array includes 
 
   def show
     author = Author.find(params[:id])
